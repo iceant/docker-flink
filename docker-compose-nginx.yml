@@ -30,3 +30,6 @@ services:
       - FLINK_MASTER_PORT_6123_TCP_ADDR=flink-master
     depends_on:
       - flink-master    
+networks: 
+  default:
+    name: flink
