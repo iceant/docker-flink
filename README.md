@@ -97,3 +97,22 @@ To start a Flink worker:
 Building and running your Flink application on top of the Flink cluster is as simple as extending a template Docker image. Check the template's README for further documentation.
 * [Maven template](template/maven)
 * [Sbt template](template/sbt)
+
+# example
+1. startup 
+   ```sh
+   docker compose -f .\docker-compose-nginx.yml up -d
+   ```
+2. inside flink-master box
+    ```sh
+    docker compose -f .\docker-compose-nginx.yml exec flink-master bash
+    ```
+3. run WordCount
+   ```sh
+   cd /usr/local/flink
+   ./bin/flink run ./examples/batch/WordCount.jar
+   ```
+   ```sh
+   cd /usr/local/flink
+   ./bin/flink run ./examples/batch/WordCount.jar --input /usr/local/flink/README.txt
+   ```   
