@@ -55,7 +55,7 @@ Currently supported versions:
 Add the following services to your `docker-compose.yml` to integrate a Flink master and Flink worker in [your BDE pipeline](https://github.com/big-data-europe/app-bde-pipeline):
 ```yml
 flink-master:
-   image: bde2020/flink-master:1.12.2-hadoop3.2
+   image: bde2020/flink-master:1.13.1-hadoop3.3.1
    hostname: flink-master
    container_name: flink-master
    environment:
@@ -67,7 +67,7 @@ flink-master:
      - "8081:8081"
 
  flink-worker:
-   image: bde2020/flink-worker:1.12.2-hadoop3.2
+   image: bde2020/flink-worker:1.13.1-hadoop3.3.1
    hostname: flink-worker
    container_name: flink-worker
    environment:
@@ -86,12 +86,12 @@ flink-master:
 ## Flink Master
 To start a Flink master:
 
-    docker run --name flink-master --net flink-net -e ENABLE_INIT_DAEMON=false -d bde2020/flink-master:1.12.2-hadoop3.2
+    docker run --name flink-master --net flink-net -e ENABLE_INIT_DAEMON=false -d bde2020/flink-master:1.13.1-hadoop3.3.1
 
 ## Flink Worker
 To start a Flink worker:
 
-    docker run --name flink-worker --net flink-net -e ENABLE_INIT_DAEMON=false -e FLINK_MASTER_PORT_6123_TCP_ADDR=flink-master -d bde2020/flink-worker:1.12.2-hadoop3.2
+    docker run --name flink-worker --net flink-net -e ENABLE_INIT_DAEMON=false -e FLINK_MASTER_PORT_6123_TCP_ADDR=flink-master -d bde2020/flink-worker:1.13.1-hadoop3.3.1
 
 ## Launch a Flink application
 Building and running your Flink application on top of the Flink cluster is as simple as extending a template Docker image. Check the template's README for further documentation.

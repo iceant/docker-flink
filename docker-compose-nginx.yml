@@ -1,25 +1,32 @@
-nginx:
-  build: ./nginx
-  hostname: nginx
-#    networks:
- #     - flink
-#  container_name: nginx
-  ports:
-    - "8080:80"
-flinkmaster:
-    image: bde2020/flink-master:latest
-    hostname: flink-master
-    environment:
-      - INIT_DAEMON_STEP=setup_flink
-#    networks:
-#      - flink
-flinkworker:
-    image: bde2020/flink-worker:latest
-    hostname: flink-worker
-#    networks:
-#     - flink
-    links:
-      - "flinkmaster:flink-master"
+version: "2"
 
-#networks:
-# flink:
+services:
+  nginx:
+    image: bde2020/flink-nginx:1.13.1-hadoop3.3.1
+    hostname: nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+  flink-master:
+    image: bde2020/flink-master:1.13.1-hadoop3.3.1
+    hostname: flink-master
+    container_name: flink-master
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+  flink-worker1:
+    image: bde2020/flink-worker:1.13.1-hadoop3.3.1
+    hostname: flink-worker1
+    container_name: flink-worker1
+    environment:
+      - FLINK_MASTER_PORT_6123_TCP_ADDR=flink-master
+    depends_on:
+      - flink-master
+  flink-worker2:
+    image: bde2020/flink-worker:1.13.1-hadoop3.3.1
+    hostname: flink-worker2
+    container_name: flink-worker2
+    environment:
+      - FLINK_MASTER_PORT_6123_TCP_ADDR=flink-master
+    depends_on:
+      - flink-master    

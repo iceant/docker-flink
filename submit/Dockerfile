@@ -1,4 +1,4 @@
-FROM bde2020/flink-base:1.12.2-hadoop3.2
+FROM bde2020/flink-base:1.13.1-hadoop3.3.1
 
 LABEL MAINTAINER="Gezim Sejdiu <g.sejdiu@gmail.com>"
 

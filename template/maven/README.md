@@ -32,7 +32,7 @@ If you overwrite the template's `CMD` in your Dockerfile, make sure to execute t
 
 #### Example Dockerfile
 ```
-FROM bde2020/flink-maven-template:1.12.2-hadoop3.2
+FROM bde2020/flink-maven-template:1.13.1-hadoop3.3.1
 
 MAINTAINER Gezim Sejdiu <g.sejdiu@gmail.com>
 
