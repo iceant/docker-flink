@@ -116,3 +116,5 @@ Building and running your Flink application on top of the Flink cluster is as si
    cd /usr/local/flink
    ./bin/flink run ./examples/batch/WordCount.jar --input /usr/local/flink/README.txt
    ```   
+4. check Flink Dashboard
+   Visit `http://localhost/` will show you the Flink Dashboard
